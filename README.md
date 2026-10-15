@@ -2,6 +2,8 @@
 
 **Agents that spend · Briefcase x Stripe hackathon, London, 15 Oct 2026**
 
+**Live audit trail:** https://sally-spend.heysalad-o.workers.dev
+
 ## 30-second pitch
 Sally is HeySalad's grocery agent. She already fills real Waitrose and Ocado trolleys from your list. **Sally Spend** lets her pay for them herself, on a capped Stripe Issuing card, under a written policy you can read in one minute ([policy.md](policy.md)). Small orders go through on their own, anything over the cap is refused (by Sally *and* by the card), and bigger orders wait for one tap on your phone. Every pound gets an answer to **"Why did you pay this?"**: the exact clause, the basket, the merchant, the MCC and the Stripe authorization.
 

@@ -1,0 +1,1 @@
+{"name":"sally-spend","private":true,"license":"AGPL-3.0-only","scripts":{"demo":"node src/run-demo.js --reset","start":"node src/server.js","deploy":"./deploy.sh"}}

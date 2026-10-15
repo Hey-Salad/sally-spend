@@ -21,7 +21,7 @@ function flat(o, pre = '', out = {}) { for (const [k, v] of Object.entries(o)) {
 async function ensureCard() {
   const st = load(STATE, {});
   if (st.cardId) return st;
-  const ch = await stripe('POST', 'issuing/cardholders', { type: 'individual', name: 'Peter Machona', email: 'peter@heysalad.io', phone_number: '+447700900123',
+  const ch = st.cardholderId ? { id: st.cardholderId } : await stripe('POST', 'issuing/cardholders', { type: 'individual', name: 'Peter Machona', email: 'peter@heysalad.io', phone_number: '+447700900123',
     billing: { address: { line1: '1 Test St', city: 'London', postal_code: 'EC1A 1BB', country: 'GB' } },
     individual: { first_name: 'Peter', last_name: 'Machona', dob: { day: 1, month: 1, year: 1990 }, card_issuing: { user_terms_acceptance: { date: Math.floor(Date.now() / 1000), ip: '8.8.8.8' } } } });
   const card = await stripe('POST', 'issuing/cards', { cardholder: ch.id, currency: 'gbp', type: 'virtual', status: 'active', metadata: { app: 'sally-spend' },
@@ -81,4 +81,5 @@ async function approve(id, token, by = 'Peter Machona') {
   d.approval = { by, at: new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }) + ' BST', via: 'phone approval link' };
   await pay(d, await ensureCard(), L); d.why = why(d); save(LEDGER, L); return d;
 }
-module.exports = { decide, approve, ledger, ensureCard, why, LEDGER, ROOT, P, dash };
+function newCard() { const st = load(STATE, {}); delete st.cardId; delete st.last4; save(STATE, st); }
+module.exports = { newCard, decide, approve, ledger, ensureCard, why, LEDGER, ROOT, P, dash };

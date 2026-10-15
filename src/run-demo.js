@@ -6,7 +6,7 @@ const tomorrow = (h) => { const d = new Date(Date.now() + 864e5); d.setUTCHours(
 const order = (scenario, items) => { const t = items.reduce((a, i) => a + i.pence, 0);
   return { scenario, source: run.source, store: 'waitrose', merchantName: 'Waitrose', items, basketPence: t, trolleyCheckedPence: t, deliveryFeePence: 0, slot: { start: tomorrow(10), end: tomorrow(11) } }; };
 (async () => {
-  if (process.argv.includes('--reset')) fs.rmSync(core.LEDGER, { force: true });
+  if (process.argv.includes('--reset')) { fs.rmSync(core.LEDGER, { force: true }); core.newCard(); } // fresh capped card per demo run
   const s = await core.ensureCard(); console.log(`Card ••${s.last4} (${s.cardId}) ready, Stripe TEST mode`);
   const A = order('1 · Approved: breakfast top-up', pick(['Milk', 'Eggs', 'Sourdough', 'Butter', 'Yogurts', 'Strawberries']));
   const B = order('2 · Declined: full weekly shop over the £40 cap', run.items.map((i) => ({ name: i.product, pence: i.pence, trolleyChecked: true })));

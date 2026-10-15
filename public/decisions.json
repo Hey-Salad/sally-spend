@@ -2,8 +2,8 @@
  "policyVersion": "sally-spend-policy v1 (15 Oct 2026)",
  "decisions": [
   {
-   "id": "dec_273f50169d",
-   "at": "2026-10-15T17:36:02.764Z",
+   "id": "dec_c10343aa10",
+   "at": "2026-10-15T17:41:52.334Z",
    "scenario": "1 · Approved: breakfast top-up",
    "source": "Sally Waitrose run W18, 15 Oct 2026, run cc7fd05e-d56c-480b-8cd9-f7717016fe70",
    "merchant": {
@@ -134,7 +134,7 @@
     "reasons": []
    },
    "status": "paid",
-   "approvalToken": "88e9ef69fd2084d362f77d1f",
+   "approvalToken": "3607367e3052cff3b6182d08",
    "authorizationCheck": {
     "approved": true,
     "reasons": [],
@@ -172,21 +172,21 @@
     ]
    },
    "stripe": {
-    "authorizationId": "iauth_1UQsZTQ85Jk81iwy4cUpvyXZ",
+    "authorizationId": "iauth_1UQsf6Q85Jk81iwy5PNme0RH",
     "approved": true,
     "captured": "closed",
     "transactionIds": [
-     "ipi_1UQsZUQ85Jk81iwyA7YqdNDd"
+     "ipi_1UQsf7Q85Jk81iwyYVht8Q2W"
     ],
-    "last4": "0047",
-    "cardId": "ic_1UQsZNQ85Jk81iwyDwx6nEat",
-    "dashboard": "https://dashboard.stripe.com/test/issuing/authorizations/iauth_1UQsZTQ85Jk81iwy4cUpvyXZ"
+    "last4": "0070",
+    "cardId": "ic_1UQsf6Q85Jk81iwyfssK4dKi",
+    "dashboard": "https://dashboard.stripe.com/test/issuing/authorizations/iauth_1UQsf6Q85Jk81iwy5PNme0RH"
    },
-   "why": "Sally paid £22.65 to Waitrose (MCC 5411) because the order met every clause of the written policy: £22.65 is under the £40 per-order cap (SP-5), the month stays under the $100 card limit (SP-6), Waitrose is an allowlisted grocer with a grocery MCC (SP-3, SP-13, SP-14), and the checkout total matched the 7 items Sally checked in the trolley (SP-8, SP-9). It was under the £25 approval threshold, so no phone approval was needed (SP-12). Stripe authorization iauth_1UQsZTQ85Jk81iwy4cUpvyXZ was approved and captured on card ••0047."
+   "why": "Sally paid £22.65 to Waitrose (MCC 5411) because the order met every clause of the written policy: £22.65 is under the £40 per-order cap (SP-5), the month stays under the $100 card limit (SP-6), Waitrose is an allowlisted grocer with a grocery MCC (SP-3, SP-13, SP-14), and the checkout total matched the 7 items Sally checked in the trolley (SP-8, SP-9). It was under the £25 approval threshold, so no phone approval was needed (SP-12). Stripe authorization iauth_1UQsf6Q85Jk81iwy5PNme0RH was approved and captured on card ••0070."
   },
   {
-   "id": "dec_935a669e8d",
-   "at": "2026-10-15T17:36:05.355Z",
+   "id": "dec_214a42c6ff",
+   "at": "2026-10-15T17:41:54.442Z",
    "scenario": "2 · Declined: full weekly shop over the £40 cap",
    "source": "Sally Waitrose run W18, 15 Oct 2026, run cc7fd05e-d56c-480b-8cd9-f7717016fe70",
    "merchant": {
@@ -393,20 +393,20 @@
     ]
    },
    "status": "declined",
-   "approvalToken": "55de5efafcb520ab99f0a5ce",
+   "approvalToken": "04199fdc4cbc718dd1ccdd4f",
    "stripe": {
-    "authorizationId": "iauth_1UQsZVQ85Jk81iwypH8tjGFl",
+    "authorizationId": "iauth_1UQsf8Q85Jk81iwyax7jmnLS",
     "approved": false,
-    "declineReason": "authorization_controls",
-    "last4": "0047",
-    "cardId": "ic_1UQsZNQ85Jk81iwyDwx6nEat",
-    "dashboard": "https://dashboard.stripe.com/test/issuing/authorizations/iauth_1UQsZVQ85Jk81iwypH8tjGFl"
+    "declineReason": "insufficient_funds",
+    "last4": "0070",
+    "cardId": "ic_1UQsf6Q85Jk81iwyfssK4dKi",
+    "dashboard": "https://dashboard.stripe.com/test/issuing/authorizations/iauth_1UQsf8Q85Jk81iwyax7jmnLS"
    },
-   "why": "Sally did not pay. SP-5 per_order_cap: £71.92 vs cap £40.00; SP-6 monthly_cap: month $31.71 + ~$100.69 vs $100.00. The card itself also enforces the cap: Stripe declined test authorization iauth_1UQsZVQ85Jk81iwypH8tjGFl (authorization_controls)."
+   "why": "Sally did not pay. SP-5 per_order_cap: £71.92 vs cap £40.00; SP-6 monthly_cap: month $31.71 + ~$100.69 vs $100.00. The card itself also enforces the cap: Stripe declined test authorization iauth_1UQsf8Q85Jk81iwyax7jmnLS (insufficient_funds)."
   },
   {
-   "id": "dec_27abeaee84",
-   "at": "2026-10-15T17:36:05.853Z",
+   "id": "dec_a1da78d522",
+   "at": "2026-10-15T17:41:54.909Z",
    "scenario": "3 · Needs phone approval: dinner basket over £25",
    "source": "Sally Waitrose run W18, 15 Oct 2026, run cc7fd05e-d56c-480b-8cd9-f7717016fe70",
    "merchant": {
@@ -550,9 +550,61 @@
      "SP-12 £30.37 is above the phone-approval threshold £25.00"
     ]
    },
-   "status": "pending_approval",
-   "approvalToken": "c604595438d366ec31faed38",
-   "why": "Not paid yet. SP-12 £30.37 is above the phone-approval threshold £25.00. Waiting for Peter Machona to approve on his phone."
+   "status": "paid",
+   "approvalToken": "43c1e5a1da2151f007f1756a",
+   "why": "Sally paid £30.37 to Waitrose (MCC 5411) because the order met every clause of the written policy: £30.37 is under the £40 per-order cap (SP-5), the month stays under the $100 card limit (SP-6), Waitrose is an allowlisted grocer with a grocery MCC (SP-3, SP-13, SP-14), and the checkout total matched the 10 items Sally checked in the trolley (SP-8, SP-9). It was over the £25 phone-approval threshold, so it waited until Peter Machona approved it at 15/10/2026, 18:42:51 BST (SP-12). Stripe authorization iauth_1UQsg4Q85Jk81iwyrph8gX7Q was approved and captured on card ••0070.",
+   "approval": {
+    "by": "Peter Machona",
+    "at": "15/10/2026, 18:42:51 BST",
+    "via": "phone approval link"
+   },
+   "authorizationCheck": {
+    "approved": true,
+    "reasons": [],
+    "checks": [
+     {
+      "rule": "kill_switch",
+      "clause": "SP-2",
+      "pass": true,
+      "detail": "freeze switch off"
+     },
+     {
+      "rule": "auth_mcc",
+      "clause": "SP-13",
+      "pass": true,
+      "detail": "MCC 5411 (grocery_stores_supermarkets)"
+     },
+     {
+      "rule": "auth_merchant",
+      "clause": "SP-14",
+      "pass": true,
+      "detail": "merchant \"Waitrose\""
+     },
+     {
+      "rule": "auth_amount",
+      "clause": "SP-15",
+      "pass": true,
+      "detail": "£30.37 vs approved order £30.37 (+1%) and cap £40.00; order status approved"
+     },
+     {
+      "rule": "monthly_cap",
+      "clause": "SP-6",
+      "pass": true,
+      "detail": "monthly $100 cap"
+     }
+    ]
+   },
+   "stripe": {
+    "authorizationId": "iauth_1UQsg4Q85Jk81iwyrph8gX7Q",
+    "approved": true,
+    "captured": "closed",
+    "transactionIds": [
+     "ipi_1UQsg5Q85Jk81iwybaKv387A"
+    ],
+    "last4": "0070",
+    "cardId": "ic_1UQsf6Q85Jk81iwyfssK4dKi",
+    "dashboard": "https://dashboard.stripe.com/test/issuing/authorizations/iauth_1UQsg4Q85Jk81iwyrph8gX7Q"
+   }
   }
  ]
 }

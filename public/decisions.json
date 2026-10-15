@@ -1,0 +1,558 @@
+{
+ "policyVersion": "sally-spend-policy v1 (15 Oct 2026)",
+ "decisions": [
+  {
+   "id": "dec_273f50169d",
+   "at": "2026-10-15T17:36:02.764Z",
+   "scenario": "1 · Approved: breakfast top-up",
+   "source": "Sally Waitrose run W18, 15 Oct 2026, run cc7fd05e-d56c-480b-8cd9-f7717016fe70",
+   "merchant": {
+    "name": "Waitrose",
+    "mcc": "5411",
+    "category": "grocery_stores_supermarkets",
+    "store": "waitrose"
+   },
+   "amountPence": 2265,
+   "items": [
+    {
+     "name": "Essential British Free Range Whole Milk 2 Pints",
+     "pence": 125
+    },
+    {
+     "name": "Duchy Organic 12 Medium Eggs",
+     "pence": 550
+    },
+    {
+     "name": "GAIL's Sourdough",
+     "pence": 485
+    },
+    {
+     "name": "Waitrose Strawberries",
+     "pence": 370
+    },
+    {
+     "name": "Yeo Valley Organic Natural Yogurts",
+     "pence": 285
+    },
+    {
+     "name": "Essential Unsalted Butter",
+     "pence": 200
+    },
+    {
+     "name": "Essential Reduced Fat Coconut Milk",
+     "pence": 250
+    }
+   ],
+   "policy": {
+    "outcome": "allow",
+    "results": [
+     {
+      "rule": "feature_enabled",
+      "clause": "SP-1",
+      "pass": true,
+      "severity": "hard",
+      "detail": "autonomous checkout on"
+     },
+     {
+      "rule": "kill_switch",
+      "clause": "SP-2",
+      "pass": true,
+      "severity": "hard",
+      "detail": "freeze switch off"
+     },
+     {
+      "rule": "store_allowlist",
+      "clause": "SP-3",
+      "pass": true,
+      "severity": "hard",
+      "detail": "store=waitrose"
+     },
+     {
+      "rule": "basket_valid",
+      "clause": "SP-4",
+      "pass": true,
+      "severity": "hard",
+      "detail": "£22.65"
+     },
+     {
+      "rule": "per_order_cap",
+      "clause": "SP-5",
+      "pass": true,
+      "severity": "hard",
+      "detail": "£22.65 vs cap £40.00"
+     },
+     {
+      "rule": "monthly_cap",
+      "clause": "SP-6",
+      "pass": true,
+      "severity": "hard",
+      "detail": "month $0.00 + ~$31.71 vs $100.00"
+     },
+     {
+      "rule": "no_age_restricted",
+      "clause": "SP-7",
+      "pass": true,
+      "severity": "hard",
+      "detail": "none"
+     },
+     {
+      "rule": "trolley_match",
+      "clause": "SP-8",
+      "pass": true,
+      "severity": "soft",
+      "detail": "checkout £22.65 vs Sally's checked trolley £22.65"
+     },
+     {
+      "rule": "items_checked",
+      "clause": "SP-9",
+      "pass": true,
+      "severity": "soft",
+      "detail": "7 items checked"
+     },
+     {
+      "rule": "delivery_fee",
+      "clause": "SP-10",
+      "pass": true,
+      "severity": "soft",
+      "detail": "£0.00 vs max £7.00"
+     },
+     {
+      "rule": "slot_window",
+      "clause": "SP-11",
+      "pass": true,
+      "severity": "soft",
+      "detail": "2026-10-16T09:00:00.000Z – 2026-10-16T10:00:00.000Z"
+     },
+     {
+      "rule": "approval_required",
+      "clause": "SP-12",
+      "pass": true,
+      "severity": "soft",
+      "detail": "no approval needed"
+     }
+    ],
+    "reasons": []
+   },
+   "status": "paid",
+   "approvalToken": "88e9ef69fd2084d362f77d1f",
+   "authorizationCheck": {
+    "approved": true,
+    "reasons": [],
+    "checks": [
+     {
+      "rule": "kill_switch",
+      "clause": "SP-2",
+      "pass": true,
+      "detail": "freeze switch off"
+     },
+     {
+      "rule": "auth_mcc",
+      "clause": "SP-13",
+      "pass": true,
+      "detail": "MCC 5411 (grocery_stores_supermarkets)"
+     },
+     {
+      "rule": "auth_merchant",
+      "clause": "SP-14",
+      "pass": true,
+      "detail": "merchant \"Waitrose\""
+     },
+     {
+      "rule": "auth_amount",
+      "clause": "SP-15",
+      "pass": true,
+      "detail": "£22.65 vs approved order £22.65 (+1%) and cap £40.00; order status approved"
+     },
+     {
+      "rule": "monthly_cap",
+      "clause": "SP-6",
+      "pass": true,
+      "detail": "monthly $100 cap"
+     }
+    ]
+   },
+   "stripe": {
+    "authorizationId": "iauth_1UQsZTQ85Jk81iwy4cUpvyXZ",
+    "approved": true,
+    "captured": "closed",
+    "transactionIds": [
+     "ipi_1UQsZUQ85Jk81iwyA7YqdNDd"
+    ],
+    "last4": "0047",
+    "cardId": "ic_1UQsZNQ85Jk81iwyDwx6nEat",
+    "dashboard": "https://dashboard.stripe.com/test/issuing/authorizations/iauth_1UQsZTQ85Jk81iwy4cUpvyXZ"
+   },
+   "why": "Sally paid £22.65 to Waitrose (MCC 5411) because the order met every clause of the written policy: £22.65 is under the £40 per-order cap (SP-5), the month stays under the $100 card limit (SP-6), Waitrose is an allowlisted grocer with a grocery MCC (SP-3, SP-13, SP-14), and the checkout total matched the 7 items Sally checked in the trolley (SP-8, SP-9). It was under the £25 approval threshold, so no phone approval was needed (SP-12). Stripe authorization iauth_1UQsZTQ85Jk81iwy4cUpvyXZ was approved and captured on card ••0047."
+  },
+  {
+   "id": "dec_935a669e8d",
+   "at": "2026-10-15T17:36:05.355Z",
+   "scenario": "2 · Declined: full weekly shop over the £40 cap",
+   "source": "Sally Waitrose run W18, 15 Oct 2026, run cc7fd05e-d56c-480b-8cd9-f7717016fe70",
+   "merchant": {
+    "name": "Waitrose",
+    "mcc": "5411",
+    "category": "grocery_stores_supermarkets",
+    "store": "waitrose"
+   },
+   "amountPence": 7192,
+   "items": [
+    {
+     "name": "Essential British Free Range Whole Milk 2 Pints",
+     "pence": 125
+    },
+    {
+     "name": "Duchy Organic 12 Medium Eggs",
+     "pence": 550
+    },
+    {
+     "name": "GAIL's Sourdough",
+     "pence": 485
+    },
+    {
+     "name": "No.1 British Free Range Chicken Thighs",
+     "pence": 432
+    },
+    {
+     "name": "No.1 British Free Range 6 Pork Sausages",
+     "pence": 530
+    },
+    {
+     "name": "Duchy Organic Sweet Potatoes",
+     "pence": 300
+    },
+    {
+     "name": "Waitrose Red Onions",
+     "pence": 100
+    },
+    {
+     "name": "Waitrose Courgettes",
+     "pence": 440
+    },
+    {
+     "name": "Waitrose British Chestnut Mushrooms",
+     "pence": 115
+    },
+    {
+     "name": "Duchy Organic Avocado",
+     "pence": 145
+    },
+    {
+     "name": "Essential Limes 5s",
+     "pence": 140
+    },
+    {
+     "name": "Waitrose Strawberries",
+     "pence": 370
+    },
+    {
+     "name": "Waitrose Blueberries",
+     "pence": 250
+    },
+    {
+     "name": "Yeo Valley Organic Natural Yogurts",
+     "pence": 285
+    },
+    {
+     "name": "Essential Mature Cheddar Cheese Strength 4",
+     "pence": 270
+    },
+    {
+     "name": "Essential Unsalted Butter",
+     "pence": 200
+    },
+    {
+     "name": "De Cecco Pasta Penne Rigate",
+     "pence": 130
+    },
+    {
+     "name": "Waitrose Thai Hom Mali Rice",
+     "pence": 300
+    },
+    {
+     "name": "Essential Reduced Fat Coconut Milk",
+     "pence": 250
+    },
+    {
+     "name": "Essential Chickpeas in Water",
+     "pence": 55
+    },
+    {
+     "name": "Cirio Passata",
+     "pence": 140
+    },
+    {
+     "name": "Waitrose Low Sugar Nutty Granola Breakfast Cereal",
+     "pence": 265
+    },
+    {
+     "name": "Rowse Runny Honey Squeezy",
+     "pence": 200
+    },
+    {
+     "name": "Waitrose Fairtrade Italian Style Ground Coffee",
+     "pence": 385
+    },
+    {
+     "name": "Clipper Organic Fairtrade 80 Tea Bags",
+     "pence": 450
+    },
+    {
+     "name": "Essential Frozen British Garden Peas",
+     "pence": 200
+    },
+    {
+     "name": "Essential Washing Up Liquid Citrus",
+     "pence": 80
+    }
+   ],
+   "policy": {
+    "outcome": "deny",
+    "results": [
+     {
+      "rule": "feature_enabled",
+      "clause": "SP-1",
+      "pass": true,
+      "severity": "hard",
+      "detail": "autonomous checkout on"
+     },
+     {
+      "rule": "kill_switch",
+      "clause": "SP-2",
+      "pass": true,
+      "severity": "hard",
+      "detail": "freeze switch off"
+     },
+     {
+      "rule": "store_allowlist",
+      "clause": "SP-3",
+      "pass": true,
+      "severity": "hard",
+      "detail": "store=waitrose"
+     },
+     {
+      "rule": "basket_valid",
+      "clause": "SP-4",
+      "pass": true,
+      "severity": "hard",
+      "detail": "£71.92"
+     },
+     {
+      "rule": "per_order_cap",
+      "clause": "SP-5",
+      "pass": false,
+      "severity": "hard",
+      "detail": "£71.92 vs cap £40.00"
+     },
+     {
+      "rule": "monthly_cap",
+      "clause": "SP-6",
+      "pass": false,
+      "severity": "hard",
+      "detail": "month $31.71 + ~$100.69 vs $100.00"
+     },
+     {
+      "rule": "no_age_restricted",
+      "clause": "SP-7",
+      "pass": true,
+      "severity": "hard",
+      "detail": "none"
+     },
+     {
+      "rule": "trolley_match",
+      "clause": "SP-8",
+      "pass": true,
+      "severity": "soft",
+      "detail": "checkout £71.92 vs Sally's checked trolley £71.92"
+     },
+     {
+      "rule": "items_checked",
+      "clause": "SP-9",
+      "pass": true,
+      "severity": "soft",
+      "detail": "27 items checked"
+     },
+     {
+      "rule": "delivery_fee",
+      "clause": "SP-10",
+      "pass": true,
+      "severity": "soft",
+      "detail": "£0.00 vs max £7.00"
+     },
+     {
+      "rule": "slot_window",
+      "clause": "SP-11",
+      "pass": true,
+      "severity": "soft",
+      "detail": "2026-10-16T09:00:00.000Z – 2026-10-16T10:00:00.000Z"
+     }
+    ],
+    "reasons": [
+     "SP-5 per_order_cap: £71.92 vs cap £40.00",
+     "SP-6 monthly_cap: month $31.71 + ~$100.69 vs $100.00"
+    ]
+   },
+   "status": "declined",
+   "approvalToken": "55de5efafcb520ab99f0a5ce",
+   "stripe": {
+    "authorizationId": "iauth_1UQsZVQ85Jk81iwypH8tjGFl",
+    "approved": false,
+    "declineReason": "authorization_controls",
+    "last4": "0047",
+    "cardId": "ic_1UQsZNQ85Jk81iwyDwx6nEat",
+    "dashboard": "https://dashboard.stripe.com/test/issuing/authorizations/iauth_1UQsZVQ85Jk81iwypH8tjGFl"
+   },
+   "why": "Sally did not pay. SP-5 per_order_cap: £71.92 vs cap £40.00; SP-6 monthly_cap: month $31.71 + ~$100.69 vs $100.00. The card itself also enforces the cap: Stripe declined test authorization iauth_1UQsZVQ85Jk81iwypH8tjGFl (authorization_controls)."
+  },
+  {
+   "id": "dec_27abeaee84",
+   "at": "2026-10-15T17:36:05.853Z",
+   "scenario": "3 · Needs phone approval: dinner basket over £25",
+   "source": "Sally Waitrose run W18, 15 Oct 2026, run cc7fd05e-d56c-480b-8cd9-f7717016fe70",
+   "merchant": {
+    "name": "Waitrose",
+    "mcc": "5411",
+    "category": "grocery_stores_supermarkets",
+    "store": "waitrose"
+   },
+   "amountPence": 3037,
+   "items": [
+    {
+     "name": "No.1 British Free Range Chicken Thighs",
+     "pence": 432
+    },
+    {
+     "name": "No.1 British Free Range 6 Pork Sausages",
+     "pence": 530
+    },
+    {
+     "name": "Duchy Organic Sweet Potatoes",
+     "pence": 300
+    },
+    {
+     "name": "Waitrose Courgettes",
+     "pence": 440
+    },
+    {
+     "name": "Waitrose British Chestnut Mushrooms",
+     "pence": 115
+    },
+    {
+     "name": "Duchy Organic Avocado",
+     "pence": 145
+    },
+    {
+     "name": "Essential Limes 5s",
+     "pence": 140
+    },
+    {
+     "name": "Waitrose Thai Hom Mali Rice",
+     "pence": 300
+    },
+    {
+     "name": "Essential Reduced Fat Coconut Milk",
+     "pence": 250
+    },
+    {
+     "name": "Waitrose Fairtrade Italian Style Ground Coffee",
+     "pence": 385
+    }
+   ],
+   "policy": {
+    "outcome": "needs_approval",
+    "results": [
+     {
+      "rule": "feature_enabled",
+      "clause": "SP-1",
+      "pass": true,
+      "severity": "hard",
+      "detail": "autonomous checkout on"
+     },
+     {
+      "rule": "kill_switch",
+      "clause": "SP-2",
+      "pass": true,
+      "severity": "hard",
+      "detail": "freeze switch off"
+     },
+     {
+      "rule": "store_allowlist",
+      "clause": "SP-3",
+      "pass": true,
+      "severity": "hard",
+      "detail": "store=waitrose"
+     },
+     {
+      "rule": "basket_valid",
+      "clause": "SP-4",
+      "pass": true,
+      "severity": "hard",
+      "detail": "£30.37"
+     },
+     {
+      "rule": "per_order_cap",
+      "clause": "SP-5",
+      "pass": true,
+      "severity": "hard",
+      "detail": "£30.37 vs cap £40.00"
+     },
+     {
+      "rule": "monthly_cap",
+      "clause": "SP-6",
+      "pass": true,
+      "severity": "hard",
+      "detail": "month $31.71 + ~$42.52 vs $100.00"
+     },
+     {
+      "rule": "no_age_restricted",
+      "clause": "SP-7",
+      "pass": true,
+      "severity": "hard",
+      "detail": "none"
+     },
+     {
+      "rule": "trolley_match",
+      "clause": "SP-8",
+      "pass": true,
+      "severity": "soft",
+      "detail": "checkout £30.37 vs Sally's checked trolley £30.37"
+     },
+     {
+      "rule": "items_checked",
+      "clause": "SP-9",
+      "pass": true,
+      "severity": "soft",
+      "detail": "10 items checked"
+     },
+     {
+      "rule": "delivery_fee",
+      "clause": "SP-10",
+      "pass": true,
+      "severity": "soft",
+      "detail": "£0.00 vs max £7.00"
+     },
+     {
+      "rule": "slot_window",
+      "clause": "SP-11",
+      "pass": true,
+      "severity": "soft",
+      "detail": "2026-10-16T09:00:00.000Z – 2026-10-16T10:00:00.000Z"
+     },
+     {
+      "rule": "approval_required",
+      "clause": "SP-12",
+      "pass": false,
+      "severity": "soft",
+      "detail": "SP-12 £30.37 is above the phone-approval threshold £25.00"
+     }
+    ],
+    "reasons": [
+     "SP-12 £30.37 is above the phone-approval threshold £25.00"
+    ]
+   },
+   "status": "pending_approval",
+   "approvalToken": "c604595438d366ec31faed38",
+   "why": "Not paid yet. SP-12 £30.37 is above the phone-approval threshold £25.00. Waiting for Peter Machona to approve on his phone."
+  }
+ ]
+}

@@ -1,0 +1,141 @@
+{
+ "source": "Sally Waitrose run W18, 15 Oct 2026, run cc7fd05e-d56c-480b-8cd9-f7717016fe70",
+ "store": "waitrose",
+ "items": [
+  {
+   "line": "1 litre whole milk",
+   "product": "Essential British Free Range Whole Milk 2 Pints",
+   "pence": 125
+  },
+  {
+   "line": "12 medium free range eggs",
+   "product": "Duchy Organic 12 Medium Eggs",
+   "pence": 550
+  },
+  {
+   "line": "sourdough loaf",
+   "product": "GAIL's Sourdough",
+   "pence": 485
+  },
+  {
+   "line": "4 chicken thighs",
+   "product": "No.1 British Free Range Chicken Thighs",
+   "pence": 432
+  },
+  {
+   "line": "400g pork sausages",
+   "product": "No.1 British Free Range 6 Pork Sausages",
+   "pence": 530
+  },
+  {
+   "line": "2 sweet potatoes",
+   "product": "Duchy Organic Sweet Potatoes",
+   "pence": 300
+  },
+  {
+   "line": "red onions",
+   "product": "Waitrose Red Onions",
+   "pence": 100
+  },
+  {
+   "line": "courgettes x2",
+   "product": "Waitrose Courgettes",
+   "pence": 440
+  },
+  {
+   "line": "mushrooms 250g",
+   "product": "Waitrose British Chestnut Mushrooms",
+   "pence": 115
+  },
+  {
+   "line": "avocados",
+   "product": "Duchy Organic Avocado",
+   "pence": 145
+  },
+  {
+   "line": "limes",
+   "product": "Essential Limes 5s",
+   "pence": 140
+  },
+  {
+   "line": "strawberries 400g",
+   "product": "Waitrose Strawberries",
+   "pence": 370
+  },
+  {
+   "line": "blueberries 150g",
+   "product": "Waitrose Blueberries",
+   "pence": 250
+  },
+  {
+   "line": "natural yoghurt 500g",
+   "product": "Yeo Valley Organic Natural Yogurts",
+   "pence": 285
+  },
+  {
+   "line": "mature cheddar 350g",
+   "product": "Essential Mature Cheddar Cheese Strength 4",
+   "pence": 270
+  },
+  {
+   "line": "unsalted butter 250g",
+   "product": "Essential Unsalted Butter",
+   "pence": 200
+  },
+  {
+   "line": "penne pasta 500g",
+   "product": "De Cecco Pasta Penne Rigate",
+   "pence": 130
+  },
+  {
+   "line": "jasmine rice 1kg",
+   "product": "Waitrose Thai Hom Mali Rice",
+   "pence": 300
+  },
+  {
+   "line": "2 tins coconut milk",
+   "product": "Essential Reduced Fat Coconut Milk",
+   "pence": 250
+  },
+  {
+   "line": "chickpeas 400g tin",
+   "product": "Essential Chickpeas in Water",
+   "pence": 55
+  },
+  {
+   "line": "passata 500g",
+   "product": "Cirio Passata",
+   "pence": 140
+  },
+  {
+   "line": "granola 500g",
+   "product": "Waitrose Low Sugar Nutty Granola Breakfast Cereal",
+   "pence": 265
+  },
+  {
+   "line": "honey 340g",
+   "product": "Rowse Runny Honey Squeezy",
+   "pence": 200
+  },
+  {
+   "line": "ground coffee 227g",
+   "product": "Waitrose Fairtrade Italian Style Ground Coffee",
+   "pence": 385
+  },
+  {
+   "line": "tea bags 80",
+   "product": "Clipper Organic Fairtrade 80 Tea Bags",
+   "pence": 450
+  },
+  {
+   "line": "frozen garden peas 1kg",
+   "product": "Essential Frozen British Garden Peas",
+   "pence": 200
+  },
+  {
+   "line": "washing up liquid 450ml",
+   "product": "Essential Washing Up Liquid Citrus",
+   "pence": 80
+  }
+ ]
+}

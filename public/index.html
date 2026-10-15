@@ -1,0 +1,23 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Sally Spend · audit trail</title><link rel=stylesheet href="style.css">
+<div class=wrap><div class=top><img src="heysalad-logo-black.png" class=logo alt=HeySalad><span class=small>Stripe TEST mode · no real money moves</span></div>
+<h1>Why did Sally pay this?</h1>
+<p>Sally shops your grocery list, then pays on a capped Stripe Issuing card under a <a href="https://github.com/Hey-Salad/sally-spend/blob/main/policy.md">written policy</a>. Every pound below links to the clause that allowed or blocked it, the basket, and the Stripe object.</p>
+<div class=stats id=stats></div><div id=list></div>
+<p class=small id=pv></p></div>
+<script>
+const gbp=p=>'£'+(p/100).toFixed(2), esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('decisions.json',{cache:'no-store'}).then(r=>r.json()).then(L=>{
+ const ds=L.decisions; document.getElementById('pv').textContent='Policy: '+L.policyVersion;
+ const paid=ds.filter(d=>d.status=='paid').reduce((a,d)=>a+d.amountPence,0);
+ document.getElementById('stats').innerHTML=`<div class=stat><b>${gbp(paid)}</b>paid</div><div class=stat><b>${ds.filter(d=>d.status=='declined').length}</b>declined</div><div class=stat><b>${ds.filter(d=>d.status=='pending_approval').length}</b>waiting for Peter</div><div class=stat><b>£40</b>per-order cap</div><div class=stat><b>$100</b>monthly card limit</div>`;
+ document.getElementById('list').innerHTML=ds.slice().reverse().map(d=>`<section class=card id="${d.id}">
+ <div class=top><h2>${esc(d.scenario)}</h2><span class="pill ${d.status}">${d.status.replace('_',' ')}</span></div>
+ <p><b>${gbp(d.amountPence)}</b> · ${esc(d.merchant.name)} · MCC ${d.merchant.mcc} (${d.merchant.category}) · ${new Date(d.at).toLocaleString('en-GB',{timeZone:'Europe/London'})}
+ ${d.stripe?` · Stripe <a href="${d.stripe.dashboard}" target=_blank>${d.stripe.authorizationId}</a> on card ••${d.stripe.last4}`:''}</p>
+ <h3>Why did you pay this?</h3><p class=why>${esc(d.why)}</p>
+ <div class=grid><div><h3>Policy check</h3><table>${d.policy.results.map(r=>`<tr><td>${r.clause}</td><td>${r.rule}</td><td class=${r.pass?'pass':'fail'}>${r.pass?'pass':(r.severity=='hard'?'BLOCK':'ask')}</td><td>${esc(r.detail)}</td></tr>`).join('')}
+ ${(d.authorizationCheck?.checks||[]).map(r=>`<tr><td>${r.clause}</td><td>${r.rule} (at authorization)</td><td class=${r.pass?'pass':'fail'}>${r.pass?'pass':'BLOCK'}</td><td>${esc(r.detail)}</td></tr>`).join('')}</table>
+ ${d.approval?`<p>✅ Approved by ${esc(d.approval.by)} at ${esc(d.approval.at)} via ${esc(d.approval.via)}</p>`:''}</div>
+ <div><h3>Basket evidence (${d.items.length} items)</h3><ul>${d.items.map(i=>`<li>${esc(i.name)} <span>${gbp(i.pence)}</span></li>`).join('')}</ul><p class=small>${esc(d.source)}</p></div></div></section>`).join('');
+});
+</script>
